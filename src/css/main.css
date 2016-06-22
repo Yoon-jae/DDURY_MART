@@ -63,7 +63,7 @@ a:hover
 /* Image Style                                                                   */
 /*********************************************************************************/
 
-	.image
+.image
 {
 	display: inline-block;
 }
@@ -103,7 +103,7 @@ a:hover
 /* List Styles                                                                   */
 /*********************************************************************************/
 
-	ul.style1
+ul.style1
 {
 	margin: 0;
 	padding: 0em 0em 0em 0em;
@@ -235,7 +235,7 @@ ul.style3 .icon
 /* Social Icon Styles                                                            */
 /*********************************************************************************/
 
-	ul.contact
+ul.contact
 {
 	margin: 0;
 	padding: 2em 0em 0em 0em;
@@ -338,7 +338,7 @@ ul.contact li a.icon-rss:before
 /* Heading Titles                                                                */
 /*********************************************************************************/
 
-	.title
+.title
 {
 	margin-bottom: 3em;
 }

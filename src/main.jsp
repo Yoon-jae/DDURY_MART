@@ -13,7 +13,7 @@ Released   : 20131022
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title> 떠리마트</title>
+<title> Welcome to DDURRY MART</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
@@ -30,11 +30,11 @@ Released   : 20131022
 		</div>
 		<div id="menu">
 			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-				<li><a href="#" accesskey="2" title="">About Us</a></li>
-				<li><a href="#" accesskey="3" title="">Today's Item</a></li>
-				<li><a href="#" accesskey="4" title="">My page</a></li>
-				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+				<li class="current_page_item"><a href="main.jsp" accesskey="1" title="">Homepage</a></li>
+				<li><a href="aboutUs.jsp" accesskey="2" title="">About Us</a></li>
+				<li><a href="itemList.jsp" accesskey="3" title="">Item List</a></li>
+				<li><a href="myPage.jsp" accesskey="4" title="">My page</a></li>
+				<li><a href="contactUs.jsp" accesskey="5" title="">Contact Us</a></li>
 			</ul>
 		</div>
 	</div>
