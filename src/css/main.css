@@ -618,6 +618,14 @@ ul.contact li a.icon-rss:before
 /* Featured                                                                      */
 /*********************************************************************************/
 
+#loginSession
+{
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: right;
+	margin-right: 10%;
+}
+
 #featured-wrapper
 {
 	overflow: hidden;

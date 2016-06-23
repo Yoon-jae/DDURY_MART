@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<% 
+String email = (String) session.getAttribute("s_EMAIL");
+%>
 <!--
 Design by TEMPLATED
 http://templated.co
@@ -31,16 +33,15 @@ Released   : 20131022
 		<div id="menu">
 			<ul>
 				<li><a href="main.jsp" accesskey="1" title="">Homepage</a></li>
-				<li><a href="aboutUs.jsp" accesskey="2" title="">About Us</a></li>
-				<li class="current_page_item"><a href="itemList.jsp" accesskey="3" title="">Item List</a></li>
-				<li><a href="myPage.jsp" accesskey="4" title="">My page</a></li>
-				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
-				<li><a href="logout.jsp" accesskey="6" title="">logout</a></li>
+				<li class="current_page_item"><a href="itemList.jsp" accesskey="2" title="">Item List</a></li>
+				<li><a href="myPage.jsp" accesskey="3" title="">My page</a></li>
+				<li><a href="contactUs.jsp" accesskey="4" title="">Contact Us</a></li>
+				<li><a href="logout.jsp" accesskey="5" title="">logout</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
-<div id="header-featured"> </div>
+<div id="header-featured"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
 		<p><strong>Item List</strong></p>
