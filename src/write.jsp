@@ -51,6 +51,7 @@ Released   : 20131022
 <div id="wrapper">
     <div id="featured-wrapper">
        <div id="bulletin-format" align="center">
+<form action="write_proc.jsp" method="post" enctype="multipart/form-data">
 <table>
   <tr>
    <td>
@@ -58,7 +59,7 @@ Released   : 20131022
      <tr>
       <td>&nbsp;</td>
       <td align="center">상품명</td>
-      <td><input name="title" size="139" maxlength="100"></td>
+      <td><input name="item_name" size="139" type="text" maxlength="100"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
@@ -66,9 +67,9 @@ Released   : 20131022
       <td>&nbsp;</td>
       <td align="center">원가</td>
       <td>
-      <input name="original-price" tyep="number" size="60" maxlength="100">
+      <input name="item_original_price" type="number" size="60" maxlength="100">
     &nbsp&nbsp 할인된 가격
-      <input name="discount-price" tyep="number" size="60" maxlength="100">
+      <input name="item_discount_price" type="number" size="60" maxlength="100">
       </td>
       <td>&nbsp;</td>
      </tr>
@@ -76,28 +77,35 @@ Released   : 20131022
     <tr>
       <td>&nbsp;</td>
       <td align="center">위치</td>
-      <td><input name="name" size="139" maxlength="50"></td>
+      <td><input name="item_spot" type="text" size="139" maxlength="50"></td>
       <td>&nbsp;</td>
-     </tr>
+     </tr> 
       <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
     <tr>
       <td>&nbsp;</td>
-      <td align="center">마감시간</td>
-      <td><input name="password" size="139" maxlength="50"></td>
+      <td align="center">지금부터 마감시간</td>
+      <td><input name="item_expiredtime" type="number" min="30" max="300" step="30" value="30" size="139" maxlength="50">분 후</td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+	<tr>
+      <td>&nbsp;</td>
+      <td align="center">상품사진</td>
+      <td><input name="item_img" size="139" type="file" maxlength="50"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
      <tr>
       <td>&nbsp;</td>
       <td align="center">상품내용</td>
-      <td><textarea name="memo" cols="139" rows="13"></textarea></td>
+      <td><textarea name="item_contents" cols="139" rows="13"></textarea></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
      <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
      <tr align="center">
       <td>&nbsp;</td>
-      <td colspan="2"><input type="button" value="등록">
+      <td colspan="2"><input type="submit" value="등록">
        <input type="button" value="취소" onclick="window.location ='itemList.jsp'">
       <td>&nbsp;</td>
      </tr>
@@ -105,6 +113,7 @@ Released   : 20131022
    </td>
   </tr>
  </table>
+ </form>
        </div>
     </div>
 </div>
