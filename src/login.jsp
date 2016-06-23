@@ -33,28 +33,29 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
           <span class="logmod__heading-subtitle">떠리마트를 이용하기 위해 <strong>회원가입을 해주세요</strong></span>
         </div>
         <div class="logmod__form">
-          <form accept-charset="utf-8" action="#" class="simform">
+          <form action="join_proc.jsp" class="simform" method="post">
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Email*</label>
-                <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                <input name="MAKE_USER_EMAIL" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
               </div>
             </div>
             <div class="sminputs">
               <div class="input string optional">
                 <label class="string optional" for="user-pw">비밀번호 *</label>
-                <input class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="text" size="50" />
+                <input name="MAKE_USER_PASS" class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="password" size="50" />
               </div>
               <div class="input string optional">
                 <label class="string optional" for="user-pw-repeat">비밀번호를 다시입력해주세요 *</label>
-                <input class="string optional" maxlength="255" id="user-pw-repeat" placeholder="비밀번호를 다시입력해주세요" type="text" size="50" />
+                <input name="MAKE_USER_PASS_RE" class="string optional" maxlength="255" id="user-pw-repeat" placeholder="비밀번호를 다시입력해주세요" type="password" size="50" />
               </div>
             </div>
             <div class="simform__actions">
-              <input class="sumbit" name="commit" type="sumbit" value="계정 생성" />
+              <input class="sumbit" name="commit" type="submit" value="계정 생성"/>
             </div> 
           </form>
         </div> 
+		<!--
         <div class="logmod__alter">
           <div class="logmod__alter-container">
             <a href="#" class="connect facebook">
@@ -76,6 +77,7 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
             </a>
           </div>
         </div>
+		-->
       </div>
 	  
 	  
@@ -84,25 +86,26 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
           <span class="logmod__heading-subtitle">떠리마트를 이용하기 위해서는 먼저 <strong>로그인이 필요합니다 </strong> </span>
         </div> 
         <div class="logmod__form">
-          <form accept-charset="utf-8" action="#" class="simform">
+          <form action="login_proc.jsp" class="simform" method="post">
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Email*</label>
-                <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                <input name="USER_EMAIL" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
               </div>
             </div>
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-pw">비밀번호 *</label>
-                <input class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="password" size="50" />
+                <input name="USER_PASS" class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="password" size="50" />
                 						<span class="hide-password">Show</span>
               </div>
             </div>
             <div class="simform__actions">
-              <input class="sumbit" name="commit" type="sumbit" value="로그인" />
+              <input class="sumbit" name="commit" type="submit" value="로그인" />
             </div> 
           </form>
-        </div> 
+        </div>
+		<!--
         <div class="logmod__alter">
           <div class="logmod__alter-container">
             <a href="#" class="connect facebook">
@@ -123,7 +126,7 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
             </a>
           </div>
         </div>
-          </div>
+		-->
       </div>
     </div>
   </div>
