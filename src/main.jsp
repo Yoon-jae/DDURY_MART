@@ -35,6 +35,7 @@ Released   : 20131022
 				<li><a href="itemList.jsp" accesskey="3" title="">Item List</a></li>
 				<li><a href="myPage.jsp" accesskey="4" title="">My page</a></li>
 				<li><a href="contactUs.jsp" accesskey="5" title="">Contact Us</a></li>
+				<li><a href="logout.jsp" accesskey="6" title="">logout</a></li>
 			</ul>
 		</div>
 	</div>

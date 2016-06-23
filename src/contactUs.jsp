@@ -35,6 +35,7 @@ Released   : 20131022
 				<li><a href="itemList.jsp" accesskey="3" title="">Item List</a></li>
 				<li><a href="myPage.jsp" accesskey="4" title="">My page</a></li>
 				<li class="current_page_item"><a href="#" accesskey="5" title="">Contact Us</a></li>
+				<li><a href="logout.jsp" accesskey="6" title="">logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -42,7 +43,7 @@ Released   : 20131022
 <div id="header-featured"> </div>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
-		<p>여기는 <strong>떠리마트</strong>입니다.</p>
+		<p> <strong>Contact us</strong></p>
 	</div>
 </div>
 <div id="wrapper">
