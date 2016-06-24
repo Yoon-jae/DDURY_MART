@@ -1,6 +1,28 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
+<%@ page import = "java.sql.*" %>    
+<%@ include file="getDBInfo.jsp"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <% 
 String email = (String) session.getAttribute("s_EMAIL");
+Connection conn = null;
+PreparedStatement pstmt = null;
+String Query ="";
+ResultSet rs = null;
+
+int listLength = 0;
+
+try {
+	Class.forName("com.mysql.jdbc.Driver"); 
+	conn = DriverManager.getConnection(db_url, db_id, db_pw);
+
+	Query = "select count(*) from itemListTB" ;
+	pstmt = conn.prepareStatement(Query);
+	rs = pstmt.executeQuery(Query);
+
+	if(rs.next()){
+			listLength = rs.getInt(1);
+	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
@@ -42,7 +64,7 @@ Released   : 20131022
 		</div>
 	</div>
 </div>
-<div id="header-featured"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>
+<div id="header-featured-main"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
 		<p>여기는 <strong>떠리마트</strong>입니다.</p>
@@ -51,36 +73,66 @@ Released   : 20131022
 <div id="wrapper">
 	<div id="featured-wrapper">
 		<div id="featured" class="container">
-			<div class="column1"> <span class="icon icon-key"></span>
+<%
+				
+	Query = "select * from itemListTB order by db_number desc" ;
+	pstmt = conn.prepareStatement(Query);
+	rs = pstmt.executeQuery(Query);
+	int columnIndex = 1;
+		while(rs.next() && columnIndex<=4) {
+			int listIndex = rs.getInt(1);
+			String status = rs.getString(3);
+			if(status.equals("closed")) continue;
+			String name = rs.getString(4);
+			String originalPrice = rs.getString(5);
+			String discountPrice = rs.getString(6);
+			String imgpath = rs.getString(7);
+			String spot = rs.getString(8);
+			String time = rs.getString(9);
+			String text = rs.getString(11);
+				
+			Date now = new Date();
+			String oldstring = time;
+			Date expired = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(oldstring);
+						
+			time = time.substring(0, time.length()-5);
+%>
+			<div class="column<%=columnIndex%>" float="inline-block"> <a href="view.jsp?listIndex=<%=listIndex%>"><span class="icon"><img src="<%=imgpath%>" style="width:150px; height:150px"></span>
 				<div class="title">
-					<h2>Item1</h2>
+					<h2><%=name%></h2>
 				</div>
-				<p>Item1에 대한 간략한 내용입니다.</p>
+				<p><%=text%></p>
 			</div>
-			<div class="column2"> <span class="icon icon-legal"></span>
-				<div class="title">
-					<h2>Item2</h2>
-				</div>
-				<p>Item2에 대한 간략한 내용입니다.</p>
-			</div>
-			<div class="column3"> <span class="icon icon-unlock"></span>
-				<div class="title">
-					<h2>Item3</h2>
-				</div>
-				<p>Item3에 대한 간략한 내용입니다.</p>
-			</div>
-			<div class="column4"> <span class="icon icon-wrench"></span>
-				<div class="title">
-					<h2>Item4</h2>
-				</div>
-				<p>Item4에 대한 간략한 내용입니다.</p>
-			</div>
+<%
+					columnIndex++;
+		}
+%>
 		</div>
-
 	</div>
 </div>
+<%
+		rs.close();
+		pstmt.close();
+		conn.close();
+	}  catch(Exception e) {
+		e.printStackTrace();
+		out.println(e.getMessage());
+	} finally {
+		if (rs!= null) {
+				rs.close();
+		}  
+		if (pstmt!= null) {
+				pstmt.close();
+		}
+
+		if (conn!= null) {
+				conn.close();
+		}
+
+	}
+%>
 <div id="copyright" class="container">
-	<p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="#">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
+	<p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="https://github.com/Yoon-jae/DDURY_MART">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
 </div>
 </body>
 </html>

@@ -1,6 +1,29 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
+<%@ page import = "java.sql.*" %>    
+<%@ include file="getDBInfo.jsp"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <% 
 String email = (String) session.getAttribute("s_EMAIL");
+
+Connection conn = null;
+PreparedStatement pstmt = null;
+String Query ="";
+ResultSet rs = null;
+
+int listLength = 0;
+
+try {
+	Class.forName("com.mysql.jdbc.Driver"); 
+	conn = DriverManager.getConnection(db_url, db_id, db_pw);
+
+	Query = "select count(*) from itemListTB" ;
+	pstmt = conn.prepareStatement(Query);
+	rs = pstmt.executeQuery(Query);
+
+	if(rs.next()){
+			listLength = rs.getInt(1);
+	}
 %>
 <!--
 Design by TEMPLATED
@@ -56,23 +79,91 @@ Released   : 20131022
                 <tr style="background:url('images/table_mid.jpg') repeat-x; text-align:center;">
                 
 				<td width="5"><img src="images/table_left.jpg" width="5" height="30" /></td>
-                
-				<td width="50">상태</td>
+               
+ 			    <td width="50">글번호</td>
+				<td width="100">상태</td>
                 <td width="100">상품명</td>
-                <td width="50">원가->할인가격</td>
+                <td width="150">원가->할인가격</td>
                 <td width="100">위치</td>
                 <td width="100">마감시간</td>
-                <td width="50">글번호</td>
                 
                 <td width="7"><img src="images/table_right.jpg" width="5" height="30" /></td>
                 </tr>
-				
-                <tr height="25" align="center">
+                
 				<%
 				
+				Query = "select * from itemListTB order by db_number desc" ;
+				pstmt = conn.prepareStatement(Query);
+				rs = pstmt.executeQuery(Query);
+				if(listLength == 0) {
 				%>
-				
+					 		<tr align="center" bgcolor="#FFFFFF" height="30">
+							<td colspan="8">등록된 글이 없습니다.</td>
+							</tr>	
+							<%
+				} else {
+					while(rs.next()) {
+						int listIndex = rs.getInt(1);
+						String status = rs.getString(3);
+						String name = rs.getString(4);
+						String originalPrice = rs.getString(5);
+						String discountPrice = rs.getString(6);
+						String spot = rs.getString(8);
+						String time = rs.getString(9);
+						
+						Date now = new Date();
+						String oldstring = time;
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						sdf.setTimeZone ( TimeZone.getTimeZone ( "Asia/Seoul" ) );
+						Date strDate = sdf.format(now);
+						Date expired = sdf.format(oldstring);
+						out.println("<script>console.log('expire: "+expired+"')</script>");
+						out.println("<script>console.log('now: "+strDate+"')</script>");
+						
+						if(expired.getTime() - now.getTime() <= 0) {
+							status = "closed";
+							String Query2 = "update itemListTB set db_item_status='closed' where db_number = " + listIndex;
+							PreparedStatement pstmt2 = conn.prepareStatement(Query2);
+							pstmt2.executeUpdate();
+							pstmt2.close();
+						}
+						
+						time = time.substring(0, time.length()-5);
+				%>
+				<tr height="25" align="center">
+					<td>&nbsp;</td>
+					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=listIndex%></td>
+					<td align="center"><%=status%></td>
+					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=name%></td>
+					<td align="center"><%=originalPrice%><span>-></span> <%=discountPrice%></td>
+					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=spot%></td>
+					<td align="center"><%=time%></td>
+					<td>&nbsp;</td>
 				</tr>
+				<tr height="1" bgcolor="#D2D2D2"><td colspan="8"></td></tr>
+				<%
+					}
+				}
+				rs.close();
+				pstmt.close();
+				conn.close();
+				}  catch(Exception e) {
+		e.printStackTrace();
+		out.println(e.getMessage());
+} finally {
+		if (rs!= null) {
+				rs.close();
+		}  
+		if (pstmt!= null) {
+				pstmt.close();
+		}
+
+		if (conn!= null) {
+				conn.close();
+		}
+
+}
+				%>
            </table>
  
            <table width="60%" cellpadding="0" cellspacing="0" border="0">

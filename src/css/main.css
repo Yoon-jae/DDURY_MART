@@ -473,7 +473,8 @@ ul.contact li a.icon-rss:before
 	#banner-wrapper
 {
 	overflow: hidden;
-	padding: 3em 0em;
+	padding: 0em 0em 1em 0;
+    height: 3em;
 	background: #2C383B;
 }
 
@@ -624,11 +625,13 @@ ul.contact li a.icon-rss:before
 	font-weight: bold;
 	text-align: right;
 	margin-right: 10%;
+	color: white;
 }
 
 #featured-wrapper
 {
 	overflow: hidden;
+	min-height: 20em;
 	padding: 5em 0em;
 	background: #FFF;
 	text-align: center;
@@ -709,14 +712,21 @@ ul.contact li a.icon-rss:before
 	float: right;
 }
 
+#header-featured-main
+{
+	height: 10em;
+	background-image: url(images/banner.jpg);
+	background-position: center;
+	background-size: cover;
+}
 
-	#header-featured
-	{
-		height: 10em;
-		background-image: url(images/banner.jpg);
-		background-position: center;
-		background-size: cover;
-	}
+#header-featured
+{
+	height: 5em;
+	background-image: url(images/banner.jpg);
+	background-position: center;
+	background-size: cover;
+}
 
 
 #slider-wrapper

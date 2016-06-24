@@ -42,7 +42,7 @@ try{
 		}
 } catch(Exception e) {
 		e.printStackTrace();
-		System.out.println(e.getMessage());
+		out.println(e.getMessage());
 } finally {
 		if (rs!= null) {
 				rs.close();

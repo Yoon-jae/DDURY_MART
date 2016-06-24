@@ -36,23 +36,13 @@ try{
 		String itemText = multi.getParameter("item_contents");
 		
 		String fileName = multi.getFilesystemName("item_img");
-		String itemImg = "/userImages/" + fileName;
+		String itemImg = "/DDURY_MART/src/userImages/" + fileName;
 		
 		Class.forName("com.mysql.jdbc.Driver"); 
-
 		conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		
-		Query = "insert into itemListTB (db_mail, db_item_status, db_item_Name, db_item_original_price, db_item_discount_price, db_item_image, db_item_spot, db_item_time) values (?,?,?,?,?,?,?,?)" ;
+		Query = "insert into itemListTB (db_mail, db_item_status, db_item_Name, db_item_original_price, db_item_discount_price, db_item_image, db_item_spot, db_item_time, db_item_IsDelete, db_item_text) values (?,?,?,?,?,?,?,?,?,?)" ;
 		pstmt = conn.prepareStatement(Query);
-		
-		out.println(email);
-		out.println(itemName);
-		out.println(itemOriginalPrice);
-		out.println(itemDiscountPrice);
-		out.println(itemSpot);
-		out.println(itemTime);
-		out.println(itemText);
-		out.println(itemImg);
 		
 		Date now = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -62,11 +52,9 @@ try{
 		cal.setTime(now);
 
 		String currentTime = sdf.format(cal.getTime());
-		out.println("현재시간 : " + currentTime);
 		
 		cal.add(Calendar.MINUTE, Integer.parseInt(itemTime));
 		String addTime = sdf.format(cal.getTime());
-		out.println("더해진 시간 : " + addTime);
 		
 		pstmt.setString(1,email);
 		pstmt.setString(2,"open");
@@ -76,11 +64,10 @@ try{
 		pstmt.setString(6,itemImg);
 		pstmt.setString(7,itemSpot);
 		pstmt.setString(8,addTime);
+		pstmt.setString(9,"on");
+		pstmt.setString(10,itemText);
 		
-		out.println("시간까지 저장");
-		int updateResult = pstmt.executeUpdate();
-		out.println(updateResult);
-		out.println("DB 저장");
+		pstmt.executeUpdate();
 }catch(Exception e){
 		e.printStackTrace();
 		out.println(e.getMessage());
@@ -98,5 +85,5 @@ try{
 }
 %>
 <script>
-//window.location = "itemList.jsp";
+window.location = "itemList.jsp";
 </script>
