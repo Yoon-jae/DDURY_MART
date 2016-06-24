@@ -67,7 +67,7 @@ Released   : 20131022
 <div id="header-featured"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
-		<p><strong>Item List</strong></p>
+		<p><strong>My page</strong></p>
 	</div>
 </div>
 <div id="wrapper">

@@ -83,7 +83,7 @@ Released   : 20131022
 <link href="css/normailize.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
-        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 </head>
 <body>
 <div id="header-wrapper">
@@ -133,7 +133,7 @@ Released   : 20131022
     <tr>
       <td width="0">&nbsp;</td>
       <td align="center" width="100">위치</td>
-      <td align="center" width="600"><%=itemSpot%><button id="item-spot">지도보기</button></td>
+      <td align="center" width="600"><%=itemSpot%></td>
       <td width="0">&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
@@ -147,7 +147,13 @@ Released   : 20131022
     <tr>
       <td width="0">&nbsp;</td>
       <td align="center" width="100">상품내용</td>
-      <td width="600" id="item-content"><img src=<%=itemImg%> width="300" height="300" float="left"><br><%=itemText%></td>
+      <td width="700" id="item-content">
+	  <div>
+	  <img src=<%=itemImg%> width="300" height="300" style="display:inline-block">
+	  <div id="mapContainer" width="300" height="300" style="display:inline-block"></div>
+	  </div>
+	  <br><br><%=itemText%>
+	  </td>
       <td width="0">&nbsp;</td>
     </tr>
      <tr><td width="0">&nbsp;</td><td width="399" colspan="2" height="200"></tr>
@@ -159,10 +165,10 @@ Released   : 20131022
     <input type=button value="목록" onclick="window.location ='itemList.jsp'">
 	<%
 	if(email.equals(userMail)) {
-		%>
+	%>
 		    <input type=button value="수정" onclick="window.location ='modify.jsp?listIndex=<%=listIndex%>'">
 		    <input type=button value="삭제" onclick="wantADelete()">
-<%
+	<%
 	}
 	%>
       <td width="0">&nbsp;</td>
@@ -186,34 +192,89 @@ function wantADelete() {
 	}
 }
 
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: {lat: 37.31, lng: -122.04}
-  });
-  var geocoder = new google.maps.Geocoder();
+function initialize(LAT,LANG,ZOOM,ADDR){
+      var mapProp = {
+         center:new google.maps.LatLng(LAT, LANG),
+         zoom: ZOOM,
+         panControl:true,
+         zoomControl:true,
+         mapTypeControl:true,
+         scaleControl:true,
+         streetViewControl:true,
+         overviewMapControl:true,
+         rotateControl:true,   
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+//         mapTypeId: google.maps.MapTypeId.HYBRID
+      };
+      
+      var maps = document.createElement("div");
+      maps.setAttribute("style","width:300px;height:300px; float:left;");
+	  
+      var map = new google.maps.Map(maps, mapProp);
+	  
+      document.getElementById("mapContainer").appendChild(maps);
+      
+      placeMarker(new google.maps.LatLng(LAT,LANG));
+  
+	  function placeMarker(location) {
+		var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            animation:google.maps.Animation.BOUNCE
+            // animation:google.maps.Animation.DROP
+            // icon:'pinkball.png'
+         });
 
-  document.getElementById('item-spot').addEventListener('click', function() {
-    geocodeAddress(geocoder, map);
-  });
+		var infowindow = new google.maps.InfoWindow({
+           content: ADDR
+	    });
+		infowindow.open(map,marker);
+	  }
+
+}
+   
+function draw(addr,lat,lng){
+    var latValue = parseFloat(lat);
+    var langValue = parseFloat(lng);
+    var zoomValue = 15;
+    initialize(latValue,langValue,zoomValue,addr);
+    // 처음 load시 보이게 하는 것.
+    //google.maps.event.addDomListener(window,'load', initialize);
 }
 
-function geocodeAddress(geocoder, resultsMap) {
-  var address = itemSpot;
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
+function googleapisView() {
+    var address = encodeURIComponent('<%=itemSpot%>');
+    var geocode = "http://maps.googleapis.com/maps/api/geocode/json?address="+address+"&sensor=false";
+    jQuery.ajax({
+        url: geocode,
+        type: 'POST',
+           success: function(myJSONResult){
+                    if(myJSONResult.status == 'OK') {
+						var ADDR = "";
+                        var LAT = "";
+						var LNG = "";
+                        var i;
+                        for (i = 0; i < myJSONResult.results.length; i++) {
+						  ADDR = myJSONResult.results[i].formatted_address;
+                          LAT = myJSONResult.results[i].geometry.location.lat;
+                          LNG = myJSONResult.results[i].geometry.location.lng;
+                        }
+                        draw(ADDR,LAT,LNG);
+                    } else if(myJSONResult.status == 'ZERO_RESULTS') {
+                        alert("지오코딩이 성공했지만 반환된 결과가 없음을 나타냅니다.\n\n이는 지오코딩이 존재하지 않는 address 또는 원격 지역의 latlng을 전달받는 경우 발생할 수 있습니다.")
+                    } else if(myJSONResult.status == 'OVER_QUERY_LIMIT') {
+                        alert("할당량이 초과되었습니다.");
+                    } else if(myJSONResult.status == 'REQUEST_DENIED') {
+                        alert("요청이 거부되었습니다.\n\n대부분의 경우 sensor 매개변수가 없기 때문입니다.");
+                    } else if(myJSONResult.status == 'INVALID_REQUEST') {
+                        alert("일반적으로 쿼리(address 또는 latlng)가 누락되었음을 나타냅니다.");
+                    }
+            }
+    });
 }
+
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB64rUU-Vm8dO2S2RI45g-7yEZW9HkmnA&signed_in=true&callback=initMap"async defer></script>
+<script src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAN1eZtSlGJ8DnTIEtbXPWBAWQsd3HvHOs&sensor=false&callback=googleapisView"></script>
 
 </html>
  
