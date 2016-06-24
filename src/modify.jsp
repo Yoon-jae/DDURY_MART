@@ -4,6 +4,8 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <% 
+
+// DB로 부터 읽어온 값들을 그대로 value 값에 넣어서 modify할 준비를 만든다.
 String email = (String) session.getAttribute("s_EMAIL");
 String listIndex = request.getParameter("listIndex");
 

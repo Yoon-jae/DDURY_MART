@@ -4,6 +4,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <% 
+// Item의 상세한 내용을 여주는 것.
 String email = (String) session.getAttribute("s_EMAIL");
 String listIndex = request.getParameter("listIndex");
 

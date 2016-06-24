@@ -55,29 +55,6 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
             </div> 
           </form>
         </div> 
-		<!--
-        <div class="logmod__alter">
-          <div class="logmod__alter-container">
-            <a href="#" class="connect facebook">
-              <div class="connect__icon">
-                <i class="fa fa-facebook"></i>
-              </div>
-              <div class="connect__context">
-                <span><strong>Facebook</strong>계정으로 가입하기</span>
-              </div>
-            </a>
-              
-            <a href="#" class="connect googleplus">
-              <div class="connect__icon">
-                <i class="fa fa-google-plus"></i>
-              </div>
-              <div class="connect__context">
-                <span><strong>Google+</strong>계정으로 가입하기</span>
-              </div>
-            </a>
-          </div>
-        </div>
-		-->
       </div>
 	  
 	  
@@ -105,28 +82,6 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
             </div> 
           </form>
         </div>
-		<!--
-        <div class="logmod__alter">
-          <div class="logmod__alter-container">
-            <a href="#" class="connect facebook">
-              <div class="connect__icon">
-                <i class="fa fa-facebook"></i>
-              </div>
-              <div class="connect__context">
-                <span><strong>Facebook</strong>으로 로그인하기</span>
-              </div>
-            </a>
-            <a href="#" class="connect googleplus">
-              <div class="connect__icon">
-                <i class="fa fa-google-plus"></i>
-              </div>
-              <div class="connect__context">
-                <span><strong>Google+</strong>로 로그인하기</span>
-              </div>
-            </a>
-          </div>
-        </div>
-		-->
       </div>
     </div>
   </div>

@@ -17,6 +17,7 @@ try {
 	Class.forName("com.mysql.jdbc.Driver"); 
 	conn = DriverManager.getConnection(db_url, db_id, db_pw);
 
+	// imteListTB의 size를 저장하는 query문
 	Query = "select count(*) from itemListTB" ;
 	pstmt = conn.prepareStatement(Query);
 	rs = pstmt.executeQuery(Query);
@@ -91,7 +92,7 @@ Released   : 20131022
                 </tr>
                 
 				<%
-				
+				// itemListTB로 부터 삭제가 되지 않은 것들을 내림차순으로 가져오라는 query문
 				Query = "select * from itemListTB where db_item_IsDelete='on' order by db_number desc " ;
 				pstmt = conn.prepareStatement(Query);
 				
@@ -119,7 +120,7 @@ Released   : 20131022
 						
  						java.util.Date expired = sdf.parse(exTime);
 						
-						 						
+						// 현재 시간과 마감 시간을 비교하여 open/close 결정 						
  						if(expired.getTime() - now.getTime() <= 0) {
  							status = "closed";
  							String Query2 = "update itemListTB set db_item_status='closed' where db_number = " + listIndex;

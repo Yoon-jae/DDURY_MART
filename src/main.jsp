@@ -16,6 +16,7 @@ try {
 	Class.forName("com.mysql.jdbc.Driver"); 
 	conn = DriverManager.getConnection(db_url, db_id, db_pw);
 
+	// itemListTB의 size를 가져오는 Query문
 	Query = "select count(*) from itemListTB" ;
 	pstmt = conn.prepareStatement(Query);
 	rs = pstmt.executeQuery(Query);
@@ -74,7 +75,7 @@ Released   : 20131022
 	<div id="featured-wrapper">
 		<div id="featured" class="container">
 <%
-				
+	// itemListTB로 부터 삭제가 안된 것들을 내림차순으로 가져오게하는 Query문
 	Query = "select * from itemListTB where db_item_IsDelete='on' order by db_number desc" ;
 	
 	pstmt = conn.prepareStatement(Query);

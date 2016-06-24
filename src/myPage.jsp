@@ -4,6 +4,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <% 
+// 등록되어진 글 중에서 email을 확인하여 내가 등록한 것들만 보이게하는 것.
 String email = (String) session.getAttribute("s_EMAIL");
 
 Connection conn = null;
