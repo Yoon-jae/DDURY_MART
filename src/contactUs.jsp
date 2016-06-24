@@ -28,7 +28,7 @@ Released   : 20131022
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">DDURY MART</a></h1>
+			<h1><a href="main.jsp">DDURY MART</a></h1>
 			<span>in 궁동</span>
 		</div>
 		<div id="menu">

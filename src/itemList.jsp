@@ -2,7 +2,7 @@
 <%@ page import = "java.sql.*" %>    
 <%@ include file="getDBInfo.jsp"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
+<%@page import="java.util.*"%>
 <% 
 String email = (String) session.getAttribute("s_EMAIL");
 
@@ -50,7 +50,7 @@ Released   : 20131022
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">DDURY MART</a></h1>
+			<h1><a href="main.jsp">DDURY MART</a></h1>
 			<span>in 궁동</span>
 		</div>
 		<div id="menu">
@@ -109,26 +109,10 @@ Released   : 20131022
 						String originalPrice = rs.getString(5);
 						String discountPrice = rs.getString(6);
 						String spot = rs.getString(8);
-						String time = rs.getString(9);
+						String exTime = rs.getString(9);
+
 						
-						Date now = new Date();
-						String oldstring = time;
-						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-						sdf.setTimeZone ( TimeZone.getTimeZone ( "Asia/Seoul" ) );
-						Date strDate = sdf.format(now);
-						Date expired = sdf.format(oldstring);
-						out.println("<script>console.log('expire: "+expired+"')</script>");
-						out.println("<script>console.log('now: "+strDate+"')</script>");
-						
-						if(expired.getTime() - now.getTime() <= 0) {
-							status = "closed";
-							String Query2 = "update itemListTB set db_item_status='closed' where db_number = " + listIndex;
-							PreparedStatement pstmt2 = conn.prepareStatement(Query2);
-							pstmt2.executeUpdate();
-							pstmt2.close();
-						}
-						
-						time = time.substring(0, time.length()-5);
+						exTime = exTime.substring(0, exTime.length()-5);
 				%>
 				<tr height="25" align="center">
 					<td>&nbsp;</td>
@@ -137,7 +121,7 @@ Released   : 20131022
 					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=name%></td>
 					<td align="center"><%=originalPrice%><span>-></span> <%=discountPrice%></td>
 					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=spot%></td>
-					<td align="center"><%=time%></td>
+					<td align="center"><%=exTime%></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr height="1" bgcolor="#D2D2D2"><td colspan="8"></td></tr>

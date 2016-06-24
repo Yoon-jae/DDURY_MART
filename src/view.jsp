@@ -87,7 +87,7 @@ Released   : 20131022
 <div id="header-wrapper">
     <div id="header" class="container">
         <div id="logo">
-            <h1><a href="#">DDURY MART</a></h1>
+            <h1><a href="main.jsp">DDURY MART</a></h1>
             <span>in 궁동</span>
         </div>
         <div id="menu">
@@ -155,8 +155,8 @@ Released   : 20131022
       <td width="0">&nbsp;</td>
       <td colspan="2" width="600">
     <input type=button value="목록" onclick="window.location ='itemList.jsp'">
-    <input type=button value="수정" onclick="window.location ='modify.jsp'">
-    <input type=button value="삭제" onclick="window.location ='delete.jsp'">
+    <input type=button value="수정" onclick="window.location ='modify.jsp?listIndex=<%=listIndex%>'">
+    <input type=button value="삭제" onclick="window.location ='delete.jsp?listIndex=<%=listIndex%>'">
       <td width="0">&nbsp;</td>
      </tr>
     </table>
