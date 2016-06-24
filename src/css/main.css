@@ -99,6 +99,11 @@ a:hover
 	width: auto;
 }
 
+#STAT
+{
+	width: 40px;
+	height: 20px;
+}
 /*********************************************************************************/
 /* List Styles                                                                   */
 /*********************************************************************************/
@@ -470,12 +475,13 @@ ul.contact li a.icon-rss:before
 /* Banner                                                                        */
 /*********************************************************************************/
 	
-	#banner-wrapper
+#banner-wrapper
 {
 	overflow: hidden;
 	padding: 0em 0em 1em 0;
     height: 3em;
 	background: #2C383B;
+	min-height: 4em;
 }
 
 #banner
@@ -520,6 +526,10 @@ ul.contact li a.icon-rss:before
 	color: #A2A2A2;
 }
 
+#banner > p
+{
+	font-size: 2.0em;
+}
 /*********************************************************************************/
 /* Page                                                                          */
 /*********************************************************************************/
@@ -625,6 +635,7 @@ ul.contact li a.icon-rss:before
 	font-weight: bold;
 	text-align: right;
 	margin-right: 10%;
+	margin-top: 1.0em;
 	color: white;
 }
 
@@ -714,7 +725,7 @@ ul.contact li a.icon-rss:before
 
 #header-featured-main
 {
-	height: 10em;
+	height: 5em;
 	background-image: url(images/banner.jpg);
 	background-position: center;
 	background-size: cover;

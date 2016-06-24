@@ -29,7 +29,7 @@ Released   : 20131022
 	<div id="header" class="container">
 		<div id="logo">
 			<h1><a href="main.jsp">DDURY MART</a></h1>
-			<span>in 궁동</span>
+			<span>in Daejeon</span>
 		</div>
 		<div id="menu">
 			<ul>
@@ -45,16 +45,21 @@ Released   : 20131022
 <div id="header-featured"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
-		<p> <strong>Contact us</strong></p>
+		<p name="explainContents"><strong>Contact us</strong></p>
 	</div>
 </div>
 <div id="wrapper">
 	<div id="featured-wrapper">
-
+		<div>
+			<img src='images/contactUsImg.jpg' width="300" height="300"><br><br>
+			<span id="cuNAME">Yoonjae, Cho</span><br><br>
+			<span id="cuEMAIL">yoonjae.cho92@gmail.com</span><br><br>
+			<span id="cuPHONE">>+82)10-2686-3035</span>
+		</div>
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="#">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
+	<p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="https://github.com/Yoon-jae/DDURY_MART">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
 </div>
 </body>
 </html>

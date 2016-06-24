@@ -90,7 +90,7 @@ Released   : 20131022
     <div id="header" class="container">
         <div id="logo">
             <h1><a href="main.jsp">DDURY MART</a></h1>
-            <span>in 궁동</span>
+            <span>in Daejeon</span>
         </div>
         <div id="menu">
             <ul>
@@ -106,7 +106,7 @@ Released   : 20131022
 <div id="header-featured"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>
 <div id="banner-wrapper">
     <div id="banner" class="container">
-        <p><strong>Item List</strong></p>
+        <p name="explainContents"><strong>Item List</strong></p>
     </div>
 </div>
 <div id="wrapper">
@@ -140,7 +140,16 @@ Released   : 20131022
     <tr>
       <td width="0">&nbsp;</td>
       <td align="center" width="100">마감시간</td>
-      <td align="center" width="600" id="item-time"><%=itemExpiredTime%><span><%=itemStatus%></span></td>
+      <td align="center" width="600" id="item-time"><%=itemExpiredTime%>
+    	<% if(itemStatus.equals("open")) { %>
+		<img src="images/open.jpg" width=40px height=20px>
+		<% } else {
+		%>
+		<img src="images/closed.jpg" width=40px height=20px>
+		<%					
+	    }				
+		%>
+	  </td>
       <td width="0">&nbsp;</td>
      </tr>
       <tr height="1" bgcolor="#dddddd"><td colspan="4" width="407"></td></tr>
@@ -181,7 +190,7 @@ Released   : 20131022
     </div>
 </div>
 <div id="copyright" class="container">
-    <p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="#">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
+    <p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="https://github.com/Yoon-jae/DDURY_MART">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
 </div>
 </body>
 <script>

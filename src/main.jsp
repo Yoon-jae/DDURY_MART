@@ -51,7 +51,7 @@ Released   : 20131022
 	<div id="header" class="container">
 		<div id="logo">
 			<h1><a href="main.jsp">DDURY MART</a></h1>
-			<span>in 궁동</span>
+			<span>in Daejeon</span>
 		</div>
 		<div id="menu">
 			<ul>
@@ -67,7 +67,7 @@ Released   : 20131022
 <div id="header-featured-main"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
-		<p>여기는 <strong>떠리마트</strong>입니다.</p>
+		<p name="explainContents">Here is &nbsp;<strong>DDURY_MART</strong></p>
 	</div>
 </div>
 <div id="wrapper">
@@ -103,6 +103,13 @@ Released   : 20131022
 					<h2><%=name%></h2>
 				</div>
 				<p><%=text%></p>
+				<%
+				if(status.equals("on")) {
+					%>
+					<img src="images/open.jpg" width=300 height=100>
+					<%
+				}
+				%>
 			</div>
 <%
 					columnIndex++;

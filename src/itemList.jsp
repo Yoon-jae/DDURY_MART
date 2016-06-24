@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import = "java.sql.*" %>    
 <%@ include file="getDBInfo.jsp"%>
-<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.*"%>
 <%@page import="java.util.*"%>
 <% 
 String email = (String) session.getAttribute("s_EMAIL");
@@ -51,7 +51,7 @@ Released   : 20131022
 	<div id="header" class="container">
 		<div id="logo">
 			<h1><a href="main.jsp">DDURY MART</a></h1>
-			<span>in 궁동</span>
+			<span>in Daejeon</span>
 		</div>
 		<div id="menu">
 			<ul>
@@ -67,7 +67,7 @@ Released   : 20131022
 <div id="header-featured"> <p id="loginSession"><%=email%> 님 환영합니다.<p></div>
 <div id="banner-wrapper">
 	<div id="banner" class="container">
-		<p><strong>Item List</strong></p>
+		<p name="explainContents"><strong>Item List</strong></p>
 	</div>
 </div>
 <div id="wrapper">
@@ -111,18 +111,44 @@ Released   : 20131022
 						String discountPrice = rs.getString(6);
 						String spot = rs.getString(8);
 						String exTime = rs.getString(9);
-
 						
-						exTime = exTime.substring(0, exTime.length()-5);
+						java.util.Date now = new java.util.Date();
+						
+ 						java.text.SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+ 						sdf.setTimeZone ( TimeZone.getTimeZone ( "Asia/Seoul" ) );
+						
+ 						java.util.Date expired = sdf.parse(exTime);
+						
+						 						
+ 						if(expired.getTime() - now.getTime() <= 0) {
+ 							status = "closed";
+ 							String Query2 = "update itemListTB set db_item_status='closed' where db_number = " + listIndex;
+ 							PreparedStatement pstmt2 = conn.prepareStatement(Query2);
+ 							pstmt2.executeUpdate();
+ 							pstmt2.close();
+ 						}
+						
+						String subexTime = exTime.substring(0, exTime.length()-5);
+						
 				%>
 				<tr height="25" align="center">
 					<td>&nbsp;</td>
 					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=listIndex%></td>
-					<td align="center"><%=status%></td>
+					<td align="center">
+					<% if(status.equals("open")) { %>
+						<img src="images/open.jpg" width=40px height=20px>
+					<% } else {
+					%>
+						<img src="images/closed.jpg" width=40px height=20px>
+					<%					
+					   }				
+					%>
+					
+					</td>
 					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=name%></td>
 					<td align="center"><%=originalPrice%><span>-></span> <%=discountPrice%></td>
 					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=spot%></td>
-					<td align="center"><%=exTime%></td>
+					<td align="center"><%=subexTime%></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr height="1" bgcolor="#D2D2D2"><td colspan="8"></td></tr>
@@ -159,7 +185,7 @@ Released   : 20131022
 	</div>
 </div>
 <div id="copyright" class="container">
-	<p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="#">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
+	<p>&copy; Copyrights. All rights reserved. | Yoonjae, Cho <a href="https://github.com/Yoon-jae/DDURY_MART">201202154</a> | Web-programming term project <a href="http://cse.cnu.ac.kr" rel="nofollow"> in CNU</a>.</p>
 </div>
 </body>
 </html>
