@@ -34,7 +34,6 @@ try{
 		String itemSpot = multi.getParameter("item_spot");
 		String itemTime = multi.getParameter("item_expiredtime");
 		String itemText = multi.getParameter("item_contents");
-		out.println(itemText);
 		String fileName = multi.getFilesystemName("item_img");
 		String itemImg = "/DDURY_MART/src/userImages/" + fileName;
 		
@@ -42,7 +41,6 @@ try{
 		conn = DriverManager.getConnection(db_url, db_id, db_pw);
 		
 		Query = "update itemListTB set db_item_status=?, db_item_Name=?, db_item_original_price=?, db_item_discount_price=?, db_item_image=?, db_item_spot=?, db_item_time=?, db_item_IsDelete=?, db_item_text=? where db_number=?" ;
-		out.println(Query);
 		pstmt = conn.prepareStatement(Query);
 		
 		Date now = new Date();
@@ -69,7 +67,6 @@ try{
 		pstmt.setString(10,listIndex);
 		
 		pstmt.executeUpdate();
-		out.println("success");
 }catch(Exception e){
 		e.printStackTrace();
 		out.println(e.getMessage());
@@ -86,3 +83,6 @@ try{
 		}
 }
 %>
+<script>
+window.location = "itemList.jsp";
+</script>

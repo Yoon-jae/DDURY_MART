@@ -12,6 +12,7 @@ PreparedStatement pstmt = null;
 String Query ="";
 ResultSet rs = null;
 
+String userMail = "";
 String itemName = "";
 String oldPrice = "";
 String newPrice = "";
@@ -30,6 +31,7 @@ try {
 	rs = pstmt.executeQuery(Query);
 
 	if(rs.next()){
+		userMail = rs.getString("db_mail");
 		itemName = rs.getString("db_item_Name");
 		oldPrice = rs.getString("db_item_original_price");
 		newPrice = rs.getString("db_item_discount_price");
@@ -155,8 +157,14 @@ Released   : 20131022
       <td width="0">&nbsp;</td>
       <td colspan="2" width="600">
     <input type=button value="목록" onclick="window.location ='itemList.jsp'">
-    <input type=button value="수정" onclick="window.location ='modify.jsp?listIndex=<%=listIndex%>'">
-    <input type=button value="삭제" onclick="window.location ='delete.jsp?listIndex=<%=listIndex%>'">
+	<%
+	if(email.equals(userMail)) {
+		%>
+		    <input type=button value="수정" onclick="window.location ='modify.jsp?listIndex=<%=listIndex%>'">
+		    <input type=button value="삭제" onclick="wantADelete()">
+<%
+	}
+	%>
       <td width="0">&nbsp;</td>
      </tr>
     </table>
@@ -171,6 +179,13 @@ Released   : 20131022
 </div>
 </body>
 <script>
+function wantADelete() {
+	var con = confirm("글을 삭제하시겠습니까?");
+	if(con) {
+		window.location ='delete.jsp?listIndex=<%=listIndex%>';
+	}
+}
+
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,

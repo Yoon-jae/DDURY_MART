@@ -92,7 +92,7 @@ Released   : 20131022
                 
 				<%
 				
-				Query = "select * from itemListTB order by db_number desc" ;
+				Query = "select * from itemListTB where db_item_IsDelete='on' order by db_number desc " ;
 				pstmt = conn.prepareStatement(Query);
 				rs = pstmt.executeQuery(Query);
 				if(listLength == 0) {
