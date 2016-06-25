@@ -74,12 +74,14 @@ Released   : 20131022
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="/DDURY_MART/src/images/mart_favicon.ico" >
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title> Item List</title>
+<title>Modify Item</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="css/normailize.css" rel="stylesheet" type="text/css" media="all" />
+
 <link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 </head>

@@ -77,11 +77,12 @@ Released   : 20131022
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="/DDURY_MART/src/images/mart_favicon.ico" >
 <title> Item List</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,600,700,900" rel="stylesheet" />
-<link href="css/normailize.css" rel="stylesheet" type="text/css" media="all" />
+
 <link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>

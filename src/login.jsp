@@ -5,8 +5,10 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="/DDURY_MART/src/images/mart_favicon.ico" >
     <title>떠리마트에 오신것을 환영합니다^^</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     
     <link rel="stylesheet" href="css/normalize.css">
@@ -20,8 +22,13 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
 
   <body>
     <div class="logmod">
+		
+  <div id="logo">
+  <h1><strong>DDURY MART  </strong></h1>  <img src="/DDURY_MART/src/images/cart.png" width="100px">
+			
+	</div>
   <div class="logmod__wrapper">
-	
+
     <div class="logmod__container">
       <ul class="logmod__tabs">
         <li data-tabtar="lgm-2"><a href="#">Login</a></li>
@@ -37,17 +44,17 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Email*</label>
-                <input name="MAKE_USER_EMAIL" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                <input name="MAKE_USER_EMAIL" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" required/>
               </div>
             </div>
             <div class="sminputs">
               <div class="input string optional">
                 <label class="string optional" for="user-pw">비밀번호 *</label>
-                <input name="MAKE_USER_PASS" class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="password" size="50" />
+                <input name="MAKE_USER_PASS" class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="password" size="50" required/>
               </div>
               <div class="input string optional">
                 <label class="string optional" for="user-pw-repeat">비밀번호를 다시입력해주세요 *</label>
-                <input name="MAKE_USER_PASS_RE" class="string optional" maxlength="255" id="user-pw-repeat" placeholder="비밀번호를 다시입력해주세요" type="password" size="50" />
+                <input name="MAKE_USER_PASS_RE" class="string optional" maxlength="255" id="user-pw-repeat" placeholder="비밀번호를 다시입력해주세요" type="password" size="50" required/>
               </div>
             </div>
             <div class="simform__actions">
@@ -67,13 +74,13 @@ http://codepen.io/GeBuOr/pen/mJJmgx.-->
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Email*</label>
-                <input name="USER_EMAIL" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                <input name="USER_EMAIL" class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" required/>
               </div>
             </div>
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-pw">비밀번호 *</label>
-                <input name="USER_PASS" class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="password" size="50" />
+                <input name="USER_PASS" class="string optional" maxlength="255" id="user-pw" placeholder="비밀번호" type="password" size="50" required/>
                 						<span class="hide-password">Show</span>
               </div>
             </div>

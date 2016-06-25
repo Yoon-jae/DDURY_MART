@@ -725,7 +725,7 @@ ul.contact li a.icon-rss:before
 
 #header-featured-main
 {
-	height: 5em;
+	height: 3em;
 	background-image: url(images/banner.jpg);
 	background-position: center;
 	background-size: cover;
@@ -733,7 +733,7 @@ ul.contact li a.icon-rss:before
 
 #header-featured
 {
-	height: 5em;
+	height: 3em;
 	background-image: url(images/banner.jpg);
 	background-position: center;
 	background-size: cover;

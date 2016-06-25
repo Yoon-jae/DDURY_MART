@@ -39,11 +39,12 @@ Released   : 20131022
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title> Item List</title>
+<title> My Page</title>
+<link rel="shortcut icon" href="/DDURY_MART/src/images/mart_favicon.ico" >
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-<link href="css/normailize.css" rel="stylesheet" type="text/css" media="all" />
+
 <link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 </head>
@@ -83,7 +84,7 @@ Released   : 20131022
                
  			    <td width="50">글번호</td>
 				<td width="100">상태</td>
-                <td width="100">상품명</td>
+                <td width="120">상품명</td>
                 <td width="150">원가->할인가격</td>
                 <td width="100">위치</td>
                 <td width="100">마감시간</td>
@@ -127,7 +128,7 @@ Released   : 20131022
 						time = time.substring(0, time.length()-5);
 						if(email.equals(userEMail)) {
 				%>
-                <tr height="25" align="center">
+                <tr height="40" align="center">
 					<td>&nbsp;</td>
 					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=listIndex%></td>
 					<td align="center"><% if(status.equals("open")) { %>

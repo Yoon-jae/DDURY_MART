@@ -6,7 +6,6 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
 .logmod {
   display: block;
   position: fixed;
@@ -15,13 +14,21 @@ html {
   bottom: 0;
   left: 0;
   opacity: 1;
-  background: rgba(0, 0, 0, 0.2);
+    background-image: url("/DDURY_MART/src/images/mart_background.jpg") ;
+	background-repeat:no-repeat;
+background-position:center center;
+-moz-background-size: 100% 100%, auto;
+-webkit-background-size: 100% 100%, auto;
+background-size: 100% 100%, auto;
+background-color: rgba( 255, 255, 255, 0.9 );
+
   z-index: 1;
 }
 .logmod::after {
   clear: both;
   content: "";
   display: table;
+
 }
 .logmod__wrapper {
   display: block;
@@ -32,6 +39,34 @@ html {
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
   margin: 120px auto;
 }
+
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+
+#logo
+{
+	text-align :center;
+	vertical-align : middle;
+	position: relative;
+	top: 5em;
+	left: 0;
+	width: 100%;
+	height : 6em;
+}
+
+#logo h1
+{
+	display: inline-block;
+	font-size: 4em;
+	text-transform: uppercase;
+	font-weight: 900;
+	color: #2C383B;
+	padding-right : 10px;
+	margin-bottom : 60px;
+}
+
+
 .logmod__close {
   display: block;
   position: absolute;
@@ -50,6 +85,7 @@ html {
   overflow: hidden;
   width: 100%;
 }
+
 .logmod__container::after {
   clear: both;
   content: "";
@@ -202,7 +238,7 @@ html {
   width: 50%;
   font-weight: 700;
   font-size: 16px;
-  background: #4CAF50;
+  background: #6c6c6c;
   margin-top: 7px;
 }
 .simform__actions .sumbit::after {
@@ -469,7 +505,7 @@ html {
   background-color: #007d71;
 }
 .btn.green, .simform__actions .green.sumbit {
-  background: #4CAF50;
+  background: #6c6c6c;
   color: #FFF;
 }
 .btn.green:active, .simform__actions .green.sumbit:active, .btn.green:focus, .simform__actions .green.sumbit:focus {

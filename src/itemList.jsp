@@ -38,6 +38,7 @@ Released   : 20131022
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="shortcut icon" href="/DDURY_MART/src/images/mart_favicon.ico" >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title> Item List</title>
 <meta name="keywords" content="" />
@@ -83,7 +84,7 @@ Released   : 20131022
                
  			    <td width="50">글번호</td>
 				<td width="100">상태</td>
-                <td width="100">상품명</td>
+                <td width="120">상품명</td>
                 <td width="150">원가->할인가격</td>
                 <td width="100">위치</td>
                 <td width="100">마감시간</td>
@@ -132,7 +133,7 @@ Released   : 20131022
 						String subexTime = exTime.substring(0, exTime.length()-5);
 						
 				%>
-				<tr height="25" align="center">
+				<tr height="40" align="center">
 					<td>&nbsp;</td>
 					<td align="center"><a href="view.jsp?listIndex=<%=listIndex%>"><%=listIndex%></td>
 					<td align="center">
